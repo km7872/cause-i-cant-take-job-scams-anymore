@@ -1,12 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8">
+  <style>
+    /* RESET & BASE */
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+      width: 320px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 600;
+      color: #555;
+    }
+
+    /* VERDICT CARD (The Big Indicator) */
+    .verdict-box {
+      text-align: center;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .verdict-icon { font-size: 32px; display: block; margin-bottom: 8px; }
+    .verdict-text { font-size: 20px; font-weight: 700; display: block; }
+    .score-detail { font-size: 12px; opacity: 0.8; margin-top: 4px; display: block; }
+
+    /* STATE COLORS */
+    /* Safe */
+    .state-safe { background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; }
+    /* Warning */
+    .state-warn { background-color: #fff3cd; color: #856404; border-color: #ffecb5; }
+    /* Danger */
+    .state-danger { background-color: #f8d7da; color: #842029; border-color: #f5c2c7; }
+    /* Empty/Loading */
+    .state-neutral { background-color: #e2e3e5; color: #41464b; border-color: #d3d6d8; }
+
+    /* REASONS LIST */
+    .analysis-section h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #777;
+      margin: 0 0 8px 0;
+    }
+
+    #reasons-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+    }
+
+    .reason-item {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #eee;
+      line-height: 1.4;
+      display: flex;
+      gap: 8px;
+    }
+    .reason-item:last-child { border-bottom: none; }
+    
+    .reason-icon { font-size: 14px; min-width: 16px; }
+
+    /* EMPTY STATE */
+    .hidden { display: none !important; }
+  </style>
 </head>
+
 <body>
-  <h1>Am i crazy or is this a job scam?</h1>
-  <div id="score">Loading...</div>
-  <ul id="reasons"></ul>
+  <header>
+    <h1>Job Scam Detector</h1>
+    <span style="font-size:10px; color:#999;">v1.0</span>
+  </header>
+
+  <div id="verdict-box" class="verdict-box state-neutral">
+    <span id="verdict-icon" class="verdict-icon">🔍</span>
+    <span id="verdict-text" class="verdict-text">No Email Detected</span>
+    <span id="score-text" class="score-detail">Open an email to scan</span>
+  </div>
+
+  <div id="analysis-section" class="analysis-section hidden">
+    <h2>Risk Factors Found:</h2>
+    <ul id="reasons-list">
+      </ul>
+  </div>
+
   <script type="module" src="popup.js"></script>
 </body>
 </html>

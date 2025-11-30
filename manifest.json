@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Job Scam Detector By KM",
   "version": "1.0",
-  "description": "Detects potentially fraudulent job emails using on-device Google Nano.",
+  "description": "Detects potentially fraudulent job emails.",
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["https://mail.google.com/*"],
   "content_scripts": [
@@ -17,8 +17,5 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "Job Scam Detector"
-  },
-  "features": {
-    "ai_language_model": true
   }
 }
