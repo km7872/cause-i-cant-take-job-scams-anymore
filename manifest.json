@@ -1,21 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "Job Scam Detector By KM",
+  "name": "Prysa - PRivacy-First Scam Analyzer",
+  "description": "Instantly detect job scams in Gmail using local heuristic analysis. Privacy-first protection that never sends data to the cloud.",
   "version": "1.0",
-  "description": "Detects potentially fraudulent job emails.",
-  "permissions": ["storage", "activeTab", "scripting"],
-  "host_permissions": ["https://mail.google.com/*"],
+  "author": "Katyani Mehra",
+  "permissions": [
+    "activeTab",  
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*" 
+  ],
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
       "js": ["content/content.js"]
     }
   ],
-  "background": {
-    "service_worker": "service_worker.js"
-  },
   "action": {
-    "default_popup": "popup/popup.html",
-    "default_title": "Job Scam Detector"
+    "default_popup": "popup/popup.html"
   }
 }
